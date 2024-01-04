@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Queue in DSA</title>
+        <script>
+        let queue = [];
+        let currentSize = queue.length;
+        let maxSize= 5;
+
+        // function enqueue(newVal){
+        //     if(currentSize>=maxSize){
+        //         alert('queue is full..');
+        //     }else{
+        //         queue[currentSize]=newVal;
+        //         currentSize++;
+        //     }
+        // }
+        function enqueuebtn(){
+            let newVal = document.getElementById('qEl').value;
+            
+            if(currentSize>=maxSize){
+                alert('queue is full..');
+            }else{
+                queue[currentSize]=newVal;
+                currentSize++;
+            }
+            document.getElementById('qEl').value="";
+        }
+        function display(){
+            console.log(queue);
+        }
+        function dequeue(){
+            if(!isEmpty()){
+            for(let i=0;i<queue.length;i++){
+                queue[i]=queue[i+1];
+            }
+            currentSize--;
+            queue.length=currentSize;
+            }else{
+                alert('queue already empty..');
+            }
+        }
+        function front(){
+            if(!isEmpty()){
+                console.log(queue[0]);
+            }
+            else{
+                alert('queue already empty..');
+            }
+        }
+        function rear(){
+            if(!isEmpty()){
+                console.log(queue[currentSize-1]);
+            }
+            else{
+                alert('queue already empty..');
+            }
+        }
+        function isEmpty(){
+            if(currentSize<=0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        // enqueue(54);
+        // enqueue(34);
+        // enqueue(53);
+
+        // display();
+    </script>
+    </head>
+    <body>
+        <h2>Queue with input</h2>
+        <input placeholder="Enter element" id="qEl">
+        <button onclick="enqueuebtn()">Add element</button><br><br>
+        <button onclick="dequeue()">Remove element</button><br><br>
+        <button onclick="display()">Display element</button><br><br>
+        <button onclick="front()">Front element</button><br><br>
+        <button onclick="rear()">Rear element</button>
+
+
+    </body>
+</html>
